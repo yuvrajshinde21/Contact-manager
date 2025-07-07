@@ -1,0 +1,59 @@
+<div class="container-fluid min-vh-100% bg-light d-flex flex-column">
+    <div class="container flex-grow-1 mt-4">
+        <h3 class="mb-4">➕ Update Contact</h3>
+        <form action="/contact/<%= contact.id %>" method="POST" class="row g-3 " novalidate>
+            <div class="col-md-6">
+                <label for="firstname" class="form-label">First Name *</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" value="<%=contact.first_name%>" required>
+                <!-- <div class="invalid-feedback">Please enter first name.</div> -->
+            </div>
+
+            <div class="col-md-6">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" value="<%=contact.last_name%>">
+            </div>
+
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="<%=contact.email%>">
+                <!-- <div class="invalid-feedback">Please enter a valid email.</div> -->
+            </div>
+
+            <div class="col-md-6">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone"value="<%=contact.phone%>">
+            </div>
+
+            <div class="col-md-12">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" id="address" name="address" rows="2"><%=contact.address%></textarea>
+            </div>
+
+            <div class="col-md-6">
+                <label for="birthday" class="form-label">Birthday</label>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="<%=contact.birthday ? new Date(contact.birthday).toISOString().split('T')[0] : ''%>">
+            </div>
+
+            <div class="col-md-12">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea class="form-control" id="notes" name="notes" rows="2"><%=contact.notes ? contact.notes : ''%></textarea>
+            </div>
+
+            <div class="col-12 mb-4">
+                <button type="submit" class="btn btn-primary">Save Contact</button>
+                <a href="/contact" class="btn btn-secondary ms-2">Cancel</a>
+            </div>
+        </form>
+        <% if (message && success) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= message %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% }else if(message && !success){%>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= message %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <%} %>
+    </div>
+</div>

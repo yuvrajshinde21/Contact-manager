@@ -1,0 +1,57 @@
+<!-- Main Content Wrapper -->
+<div class="container-fluid px-3 w-100">
+    <div class="container">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="h5 mb-3">📇 Contacts</h5>
+            <a href="/add" class="btn btn-sm btn-success">+ Add Contact</a>
+        </div>
+
+        <div class="container-fluid">
+            <div class="table-responsive" style="max-height: 70vh; overflow-y: auto;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>SR.NO</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (contacts.length> 0) { contacts.forEach((contact, i) => { %>
+                            <tr id="<%=contact.id%>">
+                                <td>
+                                    <%= i + 1 %>
+                                </td>
+                                <td>
+                                    <%= contact.first_name %>
+                                </td>
+                                <td>
+                                    <%= contact.email %>
+                                </td>
+                                <td>
+                                    <%= contact.phone %>
+                                </td>
+                                <td>
+                                    <a href="/edit/<%= contact.id %>"><i
+                                            class="bi bi-pencil-square m-1"></i></a>
+                                    <a href="#" onclick="deleteContact('<%= contact.id %>')">
+                                        <i class="bi bi-trash3 m-1"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <% }) } else { %>
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted py-4">No contacts available.</td>
+                                </tr>
+                                <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div id="msg"
+    style="position: fixed; bottom: 20px; right: 20px; background: #4BB543; color: white; padding: 10px 20px; border-radius: 5px; display: none;">
+</div> -->

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f1f3f4;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            font-size: 28px;
+            border-radius: 50%;
+            background-color: #1a73e8;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="navbar bg-white shadow-sm px-4 py-2 mx-4 justify-content-between align-items-center">
+        <a class="navbar-brand text-primary mx-3" href="#">
+            <i class="bi bi-arrow-left-square-fill fs-4"></i>
+        </a>
+
+        <div class="d-flex align-items-center">
+            <a href="/edit/<%= data.id%>" class="btn btn-outline-primary btn-sm me-2 mx-2">Edit</a>
+            <a href="#" class="text-danger fs-5 mx-3" onclick="deleteContact('<%= data.id %>')">
+                <i class="bi bi-trash3"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container pt-4 pb-1">
+        <div class="contact-card mx-auto" style="max-width: 100%;">
+            <div class="d-flex align-items-center mb-4">
+                <div class="avatar">AB</div>
+                <div class="ms-3">
+                    <h4 class="mb-1" id="contactName">
+                        <%=data.first_name%>
+                            <%=data.last_name%>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="card rounded-4 border-0 shadow-sm w-50 p-2 bg-light">
+                <h6 class="m-2">Contact details</h6>
+                <div class="mb-1 p-2"><i class="bi bi-envelope-at-fill"></i> <span id="contactEmail" class="px-3">
+                        <%=data.email%>
+                    </span></div>
+                <div class="mb-1 p-2"><i class="bi bi-telephone"></i> <span id="contactPhone" class="px-3">
+                        <%=data.phone%>
+                    </span></div>
+                <div class="mb-1 p-2">🎂<span id="bday" class="px-3">
+                        <%=data.birthday%>
+                    </span></div>
+                <div class="mb-1 p-2"><i class="bi bi-geo-alt"></i><span id="contactAddress" class="px-3">
+                        <%=data.address%>
+                    </span></div>
+                <div class="mb-1 p-2"><i class="bi bi-journal-bookmark-fill"></i> <span id="contactNotes" class="px-3">
+                        <%=data.notes%>
+                    </span></div>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
